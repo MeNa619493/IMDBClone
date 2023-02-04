@@ -30,7 +30,11 @@ class SplashViewModel {
             
             switch result {
             case .success(let movies):
-                self.saveMoviesToCoreData(appDelegate: appDelegate, movies: movies)
+                if movies.isEmpty {
+                    self.state = .failed
+                } else {
+                    self.saveMoviesToCoreData(appDelegate: appDelegate, movies: movies)
+                }
             case .failure(let error):
                 self.state = .failed
                 print(error.localizedDescription)

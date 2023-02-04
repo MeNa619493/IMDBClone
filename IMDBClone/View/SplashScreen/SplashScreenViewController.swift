@@ -41,7 +41,6 @@ class SplashScreenViewController: UIViewController {
                 case .success:
                     self.navigationToNextView()
                 case .failed:
-                    self.animationView?.stop()
                     self.showSnackBar()
                 case .none:
                     self.animationView?.play()
@@ -60,6 +59,7 @@ class SplashScreenViewController: UIViewController {
         snackbar.actionTextColor = UIColor.white
         snackbar.actionBlock = { [weak self] (snackbar) in
             guard let self = self else { return }
+            snackbar.dismiss()
             self.viewModel.fetchMoviesFromApi(appDelegate: self.appDelegate)
         }
 

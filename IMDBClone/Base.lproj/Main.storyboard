@@ -73,6 +73,13 @@
                                     <action selector="sortMoviesByRate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="spy-lw-f3L"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noMovies" translatesAutoresizingMaskIntoConstraints="NO" id="roi-dz-vc0">
+                                <rect key="frame" x="57" y="303" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="2Ut-RL-I7r"/>
+                                    <constraint firstAttribute="height" constant="300" id="hQ9-56-arg"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Lm-0H-0pI">
                                 <rect key="frame" x="9" y="145.5" width="396" height="716.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -92,12 +99,16 @@
                             <constraint firstItem="Dza-pY-eW7" firstAttribute="centerY" secondItem="6Ep-Vk-BcH" secondAttribute="centerY" id="XHs-Hq-49e"/>
                             <constraint firstItem="z7I-Ul-hba" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ygd-6n-bVs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Lm-0H-0pI" secondAttribute="bottom" id="aB6-05-jD0"/>
+                            <constraint firstItem="roi-dz-vc0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cAF-wJ-MuJ"/>
                             <constraint firstItem="8Lm-0H-0pI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="cE1-5T-eib"/>
+                            <constraint firstItem="roi-dz-vc0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="d1Q-BR-5i7"/>
                             <constraint firstItem="8Lm-0H-0pI" firstAttribute="top" secondItem="6Ep-Vk-BcH" secondAttribute="bottom" constant="14" id="kNb-Fn-VnL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="moviesTableView" destination="8Lm-0H-0pI" id="akL-5w-Fc6"/>
+                        <outlet property="noMoviesImage" destination="roi-dz-vc0" id="Jfs-OX-GHe"/>
+                        <outlet property="sortByLabel" destination="EIh-4a-GAl" id="9wF-Ko-pY5"/>
                         <outlet property="sortRateButton" destination="Dza-pY-eW7" id="gFn-Nu-BWl"/>
                         <outlet property="sortYearButton" destination="6Ep-Vk-BcH" id="mOQ-k4-lgk"/>
                     </connections>
@@ -108,6 +119,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="noMovies" width="200" height="150"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

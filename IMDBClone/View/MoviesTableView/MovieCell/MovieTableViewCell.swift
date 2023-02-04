@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
+    
+    static let identifer = "cell"
 
     @IBOutlet private weak var movieImage: UIImageView!
     @IBOutlet private weak var movieTitle: UILabel!

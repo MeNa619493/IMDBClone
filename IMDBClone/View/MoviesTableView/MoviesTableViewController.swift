@@ -23,6 +23,8 @@ class MoviesTableViewController: UIViewController {
     
     @IBOutlet private weak var sortYearButton: UIButton!
     @IBOutlet private weak var sortRateButton: UIButton!
+    @IBOutlet weak var sortByLabel: UILabel!
+    @IBOutlet private weak var noMoviesImage: UIImageView!
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -45,16 +47,22 @@ class MoviesTableViewController: UIViewController {
             }
         }
 
-        viewModel.updateLoadingStatus = { [weak self] () in
-            guard let self = self else { return }
-            
-            switch self.viewModel.state {
-            case .empty, .error:
-                self.hideProgress()
-            case .loading:
-                self.showprogress()
-            case .populated:
-                self.hideProgress()
+        viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] () in
+                guard let self = self else { return }
+                switch self.viewModel.state {
+                case .empty:
+                    self.hideProgress()
+                    self.handleEmptyArrayState()
+                case .error:
+                    self.hideProgress()
+                case .loading:
+                    self.showprogress()
+                case .populated:
+                    self.hideProgress()
+                    self.handlePopulatedArrayState()
+                    self.sortMoviesByYear()
+                }
             }
         }
 
@@ -71,11 +79,26 @@ class MoviesTableViewController: UIViewController {
         }
         
         viewModel.fetchMovies(appDelegate: appDelegate)
-        sortMoviesByYear()
     }
     
     private func registerNibFile() {
-        moviesTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        moviesTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: MovieTableViewCell.identifer)
+    }
+    
+    private func handleEmptyArrayState() {
+        noMoviesImage.isHidden = false
+        moviesTableView.isHidden = true
+        sortRateButton.isHidden = true
+        sortYearButton.isHidden = true
+        sortByLabel.isHidden = true
+    }
+    
+    private func handlePopulatedArrayState() {
+        noMoviesImage.isHidden = true
+        moviesTableView.isHidden = false
+        sortRateButton.isHidden = false
+        sortYearButton.isHidden = false
+        sortByLabel.isHidden = false
     }
         
     @IBAction private func sortMoviesByYear(_ sender: UIButton) {
@@ -105,16 +128,23 @@ class MoviesTableViewController: UIViewController {
     private func changeButtonTextColor() {
         sortYearButton.tintColor = sortYearButton.state.rawValue == 1 ? UIColor(hex: "#88A4E8") : UIColor(.black)
         sortRateButton.tintColor = sortRateButton.state.rawValue == 1 ? UIColor(hex: "#88A4E8") : UIColor(.black)
+        scrollToFirstRow()
+    }
+    
+    func scrollToFirstRow() {
+        let indexPath = NSIndexPath(row: 0, section: 0)
+        moviesTableView.scrollToRow(at: indexPath as IndexPath, at: .top, animated: false)
     }
 }
 
-extension MoviesTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifer, for: indexPath) as! MovieTableViewCell
         cell.selectionStyle = .none
         cell.configureCell(movie: movies[indexPath.row])
         return cell

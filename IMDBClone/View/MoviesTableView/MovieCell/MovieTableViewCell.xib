@@ -106,6 +106,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="movieDuration" destination="9z7-mG-6Za" id="UO5-YA-4q4"/>
                 <outlet property="movieImage" destination="O7v-Fk-0Za" id="aGm-te-PFA"/>

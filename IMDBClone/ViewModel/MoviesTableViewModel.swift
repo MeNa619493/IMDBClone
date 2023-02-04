@@ -51,9 +51,14 @@ class MoviesTableViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let movies):
-                self.state = .populated
-                self.movies = movies
-                self.limit = self.movies.count
+                if !movies.isEmpty {
+                    print(movies)
+                    self.state = .populated
+                    self.movies = movies
+                    self.limit = self.movies.count
+                } else {
+                    self.state = .empty
+                }
             case .failure(let error):
                 self.state = .error
                 self.alertMessage = error.localizedDescription
