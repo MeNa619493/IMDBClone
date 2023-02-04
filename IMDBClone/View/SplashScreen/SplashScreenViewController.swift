@@ -20,7 +20,7 @@ class SplashScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initView()
         initVM()
     }
     
@@ -30,7 +30,6 @@ class SplashScreenViewController: UIViewController {
         animationView?.loopMode = .loop
         view.addSubview(animationView!)
         animationView?.play()
-        
     }
         
     private func initVM() {
@@ -53,14 +52,23 @@ class SplashScreenViewController: UIViewController {
     }
         
     private func showSnackBar() {
-        let snackbar = TTGSnackbar(
-            message: "Connection Failed !",
-            duration: .middle,
-            actionText: "Reload",
-            actionBlock: { (snackbar) in
-                self.viewModel.fetchMoviesFromApi(appDelegate: self.appDelegate)
-            }
-        )
+        let snackbar = TTGSnackbar(message: "Connection Failed !",duration: .forever)
+            
+        // Action 1
+        snackbar.actionText = "Reload"
+        snackbar.actionTextColor = UIColor.white
+        snackbar.actionBlock = { (snackbar) in
+            self.viewModel.fetchMoviesFromApi(appDelegate: self.appDelegate)
+        }
+
+        // Action 2
+        snackbar.secondActionText = "Continue"
+        snackbar.secondActionTextColor = UIColor.white
+        snackbar.secondActionBlock = { [weak self] (snackbar) in
+            guard let self = self else { return }
+            self.navigationToNextView()
+        }
+        
         snackbar.show()
     }
 
