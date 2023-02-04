@@ -10,18 +10,18 @@ import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var movieImage: UIImageView!
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var movieYear: UIButton!
-    @IBOutlet weak var movieDuration: UILabel!
-    @IBOutlet weak var movieRating: UILabel!
+    @IBOutlet private weak var movieImage: UIImageView!
+    @IBOutlet private weak var movieTitle: UILabel!
+    @IBOutlet private weak var movieYear: UIButton!
+    @IBOutlet private weak var movieDuration: UILabel!
+    @IBOutlet private weak var movieRating: UILabel!
     
     override func layoutSubviews() {
         super.layoutSubviews()
         initView()
     }
     
-    func initView() {
+    private func initView() {
         movieYear.titleLabel?.font =  UIFont(name: "Helvetica", size: 8)
         movieYear.layer.cornerRadius = movieYear.frame.height/2
         movieYear.isEnabled = false

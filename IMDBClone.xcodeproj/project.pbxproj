@@ -11,6 +11,8 @@
 		390603EE298D9B9600F7A900 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390603ED298D9B9600F7A900 /* State.swift */; };
 		394C2447298D1BCB00582451 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394C2445298D1BCB00582451 /* MovieTableViewCell.swift */; };
 		394C2448298D1BCB00582451 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 394C2446298D1BCB00582451 /* MovieTableViewCell.xib */; };
+		39558BF2298F05B20035CBA1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39558BF1298F05B20035CBA1 /* UIViewController+Extension.swift */; };
+		39558BF4298F069A0035CBA1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39558BF3298F069A0035CBA1 /* UIColor+Extension.swift */; };
 		395ACB1C298E67AD009BA9CE /* movie-play.json in Resources */ = {isa = PBXBuildFile; fileRef = 395ACB1B298E67AD009BA9CE /* movie-play.json */; };
 		395ACB1E298E680D009BA9CE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB1D298E680D009BA9CE /* SplashViewModel.swift */; };
 		398F28CC298E6E0300CB6731 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F28CB298E6E0300CB6731 /* CoreDataManager.swift */; };
@@ -58,6 +60,8 @@
 		390603ED298D9B9600F7A900 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		394C2445298D1BCB00582451 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		394C2446298D1BCB00582451 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		39558BF1298F05B20035CBA1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		39558BF3298F069A0035CBA1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		395ACB1B298E67AD009BA9CE /* movie-play.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "movie-play.json"; sourceTree = "<group>"; };
 		395ACB1D298E680D009BA9CE /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		398F28CB298E6E0300CB6731 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		39558BF0298F057D0035CBA1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				39558BF1298F05B20035CBA1 /* UIViewController+Extension.swift */,
+				39558BF3298F069A0035CBA1 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		398F28CA298E6DD700CB6731 /* DatabaseService */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +251,7 @@
 		39EC5F2F298CED1A0030538E /* IMDBClone */ = {
 			isa = PBXGroup;
 			children = (
+				39558BF0298F057D0035CBA1 /* Extensions */,
 				39C8B5CD298CFEC700AAA2D8 /* View */,
 				39C8B5CA298CF74D00AAA2D8 /* ViewModel */,
 				398F28CA298E6DD700CB6731 /* DatabaseService */,
@@ -522,9 +536,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39558BF2298F05B20035CBA1 /* UIViewController+Extension.swift in Sources */,
 				394C2447298D1BCB00582451 /* MovieTableViewCell.swift in Sources */,
 				39EC5F35298CED1A0030538E /* MoviesTableViewController.swift in Sources */,
 				398F28D0298E7A8C00CB6731 /* DatabaseManager.swift in Sources */,
+				39558BF4298F069A0035CBA1 /* UIColor+Extension.swift in Sources */,
 				39EC5F31298CED1A0030538E /* AppDelegate.swift in Sources */,
 				398F28CC298E6E0300CB6731 /* CoreDataManager.swift in Sources */,
 				395ACB1E298E680D009BA9CE /* SplashViewModel.swift in Sources */,

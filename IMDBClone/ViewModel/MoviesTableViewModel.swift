@@ -47,7 +47,8 @@ class MoviesTableViewModel {
     
     func fetchMovies(appDelegate: AppDelegate) {
         state = .loading
-        databaseManager.fetchMovies(appDelegate: appDelegate) { result in
+        databaseManager.fetchMovies(appDelegate: appDelegate) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let movies):
                 self.state = .populated

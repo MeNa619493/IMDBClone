@@ -25,7 +25,9 @@ class SplashViewModel {
     }
     
     func fetchMoviesFromApi(appDelegate: AppDelegate) {
-        apiService.fetchMovies() { result in
+        apiService.fetchMovies() { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let movies):
                 self.saveMoviesToCoreData(appDelegate: appDelegate, movies: movies)
@@ -37,7 +39,9 @@ class SplashViewModel {
     }
     
     func saveMoviesToCoreData(appDelegate: AppDelegate, movies: [Movie]) {
-        databaseManager.saveMovies(appDelegate: appDelegate, movies: movies) { isCashed in
+        databaseManager.saveMovies(appDelegate: appDelegate, movies: movies) { [weak self] isCashed in
+            guard let self = self else { return }
+            
             if isCashed {
                 self.state = .success
             } else {
@@ -45,4 +49,5 @@ class SplashViewModel {
             }
         }
     }
+    
 }

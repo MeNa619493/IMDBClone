@@ -11,8 +11,8 @@ import TTGSnackbar
 
 class SplashScreenViewController: UIViewController {
 
-    var animationView: AnimationView?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private var animationView: AnimationView?
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     private lazy var viewModel: SplashViewModel = {
             return SplashViewModel()
@@ -34,17 +34,18 @@ class SplashScreenViewController: UIViewController {
         
     private func initVM() {
 
-        viewModel.updateLoadingStatus = { [weak self] () in
-            guard let self = self else { return }
-            
-            switch self.viewModel.state {
-            case .success:
-                self.navigationToNextView()
-            case .failed:
-                self.animationView?.stop()
-                self.showSnackBar()
-            case .none:
-                self.animationView?.play()
+        viewModel.updateLoadingStatus = {
+            DispatchQueue.main.async { [weak self] () in
+                guard let self = self else { return }
+                switch self.viewModel.state {
+                case .success:
+                    self.navigationToNextView()
+                case .failed:
+                    self.animationView?.stop()
+                    self.showSnackBar()
+                case .none:
+                    self.animationView?.play()
+                }
             }
         }
             
@@ -57,7 +58,8 @@ class SplashScreenViewController: UIViewController {
         // Action 1
         snackbar.actionText = "Reload"
         snackbar.actionTextColor = UIColor.white
-        snackbar.actionBlock = { (snackbar) in
+        snackbar.actionBlock = { [weak self] (snackbar) in
+            guard let self = self else { return }
             self.viewModel.fetchMoviesFromApi(appDelegate: self.appDelegate)
         }
 
@@ -72,11 +74,9 @@ class SplashScreenViewController: UIViewController {
         snackbar.show()
     }
 
-    func navigationToNextView() {
-        DispatchQueue.main.async {
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieTableViewController")
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
-        }
+    private func navigationToNextView() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieTableViewController")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
