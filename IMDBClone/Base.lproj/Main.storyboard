@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IMDBClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7I-Ul-hba">
+                                <rect key="frame" x="0.0" y="44" width="414" height="28"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Lwn-Gq-sea"/>
+                                </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.066666666666666666" green="0.054901960784313725" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="FilmKu" largeTitleDisplayMode="never" id="UDm-Xf-E4o"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SortBy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIh-4a-GAl">
+                                <rect key="frame" x="14" y="105" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ep-Vk-BcH">
+                                <rect key="frame" x="107" y="100" width="56" height="31.5"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Year">
+                                    <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="sortMoviesByYear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJT-A2-0n5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dza-pY-eW7">
+                                <rect key="frame" x="176" y="100" width="57" height="31.5"/>
+                                <color key="tintColor" red="0.53333333333333333" green="0.64313725490196072" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Rate">
+                                    <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="sortMoviesByRate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="spy-lw-f3L"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Lm-0H-0pI">
+                                <rect key="frame" x="9" y="145.5" width="396" height="716.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="z7I-Ul-hba" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="12a-48-KwA"/>
+                            <constraint firstItem="EIh-4a-GAl" firstAttribute="top" secondItem="z7I-Ul-hba" secondAttribute="bottom" constant="33" id="5VW-JV-jjD"/>
+                            <constraint firstItem="z7I-Ul-hba" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B5K-rO-d5j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Lm-0H-0pI" secondAttribute="trailing" constant="9" id="BRC-yi-mVR"/>
+                            <constraint firstItem="Dza-pY-eW7" firstAttribute="leading" secondItem="6Ep-Vk-BcH" secondAttribute="trailing" constant="13" id="BpL-5k-U9V"/>
+                            <constraint firstItem="6Ep-Vk-BcH" firstAttribute="leading" secondItem="EIh-4a-GAl" secondAttribute="trailing" constant="37" id="HK3-hu-b2L"/>
+                            <constraint firstItem="EIh-4a-GAl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="I4E-EL-rRc"/>
+                            <constraint firstItem="6Ep-Vk-BcH" firstAttribute="centerY" secondItem="EIh-4a-GAl" secondAttribute="centerY" id="Vg8-Ko-xKN"/>
+                            <constraint firstItem="Dza-pY-eW7" firstAttribute="centerY" secondItem="6Ep-Vk-BcH" secondAttribute="centerY" id="XHs-Hq-49e"/>
+                            <constraint firstItem="z7I-Ul-hba" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ygd-6n-bVs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Lm-0H-0pI" secondAttribute="bottom" id="aB6-05-jD0"/>
+                            <constraint firstItem="8Lm-0H-0pI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="cE1-5T-eib"/>
+                            <constraint firstItem="8Lm-0H-0pI" firstAttribute="top" secondItem="6Ep-Vk-BcH" secondAttribute="bottom" constant="14" id="kNb-Fn-VnL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="moviesTableView" destination="8Lm-0H-0pI" id="akL-5w-Fc6"/>
+                        <outlet property="sortRateButton" destination="Dza-pY-eW7" id="gFn-Nu-BWl"/>
+                        <outlet property="sortYearButton" destination="6Ep-Vk-BcH" id="mOQ-k4-lgk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9" y="48"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
