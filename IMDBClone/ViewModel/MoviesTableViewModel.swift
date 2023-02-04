@@ -16,7 +16,7 @@ class MoviesTableViewModel {
     
     var paginationMovies = [Movie]() {
         didSet {
-            self.reloadTableViewClosure?(paginationMovies)
+            reloadTableViewClosure?(paginationMovies)
         }
     }
     var moviesPerPage = 10
@@ -24,29 +24,30 @@ class MoviesTableViewModel {
     
     var state: State = .empty {
         didSet {
-            self.updateLoadingStatus?()
+            updateLoadingStatus?()
         }
     }
         
     var alertMessage: String? {
         didSet {
-            self.showAlertClosure?()
+            showAlertClosure?()
         }
     }
     
-    let apiService: ApiService
+    let databaseManager: DatabaseService
+    let apiservice = NetworkManager()
     
     var reloadTableViewClosure: (([Movie]?)->())?
     var showAlertClosure: (()->())?
     var updateLoadingStatus: (()->())?
     
-    init(apiService: ApiService = NetworkManager()) {
-        self.apiService = apiService
+    init(databaseManager: DatabaseService = DatabaseManager()) {
+        self.databaseManager = databaseManager
     }
     
-    func fetchMovies() {
+    func fetchMovies(appDelegate: AppDelegate) {
         state = .loading
-        apiService.fetchMovies() { result in
+        databaseManager.fetchMovies(appDelegate: appDelegate) { result in
             switch result {
             case .success(let movies):
                 self.state = .populated

@@ -10,7 +10,8 @@ target 'IMDBClone' do
 	pod 'Kingfisher', '~> 7.0'
 	pod 'Alamofire'
 	pod 'ProgressHUD'
-	pod 'lottie-ios'
+	pod 'lottie-ios', '~> 3.2.3'
+	pod "TTGSnackbar"
 
   target 'IMDBCloneTests' do
     inherit! :search_paths

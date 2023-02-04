@@ -1,16 +1,18 @@
 PODS:
   - Alamofire (5.6.4)
   - Kingfisher (7.5.0)
-  - lottie-ios (4.1.2)
+  - lottie-ios (3.2.3)
   - ProgressHUD (13.6.2)
   - ReachabilitySwift (5.0.0)
+  - TTGSnackbar (1.11.1)
 
 DEPENDENCIES:
   - Alamofire
   - Kingfisher (~> 7.0)
-  - lottie-ios
+  - lottie-ios (~> 3.2.3)
   - ProgressHUD
   - ReachabilitySwift
+  - TTGSnackbar
 
 SPEC REPOS:
   trunk:
@@ -19,14 +21,16 @@ SPEC REPOS:
     - lottie-ios
     - ProgressHUD
     - ReachabilitySwift
+    - TTGSnackbar
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
-  lottie-ios: b3846a9fa8ca1a1a3bebfa256ebe8b6fd4aaaaad
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  TTGSnackbar: fea91c62637b5662f808a4c3b55f7631cb7e1ef7
 
-PODFILE CHECKSUM: 63649aa1fe5c03943e449464d7842ae1619afa2a
+PODFILE CHECKSUM: d9fdb39dcbd39f10d5351e9610370871c828b4c3
 
 COCOAPODS: 1.11.3

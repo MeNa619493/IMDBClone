@@ -15,10 +15,13 @@ struct MovieResponse: Codable {
 
 // MARK: - Item
 struct Movie: Codable {
-    let id, rank, title, fullTitle: String?
-    let year: String?
-    let image: String?
-    let crew, imDBRating, imDBRatingCount: String?
+    var id, rank, title, fullTitle: String?
+    var year: String?
+    var image: String?
+    var crew, imDBRating, imDBRatingCount: String?
+    
+    init() {
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, rank, title, fullTitle, year, image, crew
