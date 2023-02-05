@@ -12,6 +12,7 @@ target 'IMDBClone' do
 	pod 'ProgressHUD'
 	pod 'lottie-ios', '~> 3.2.3'
 	pod "TTGSnackbar"
+	pod 'SkeletonView'
 
   target 'IMDBCloneTests' do
     inherit! :search_paths

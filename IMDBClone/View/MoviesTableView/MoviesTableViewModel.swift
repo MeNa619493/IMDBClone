@@ -35,7 +35,6 @@ class MoviesTableViewModel {
     }
     
     let databaseManager: DatabaseService
-    let apiservice = NetworkManager()
     
     var reloadTableViewClosure: (([Movie]?)->())?
     var showAlertClosure: (()->())?
@@ -52,7 +51,6 @@ class MoviesTableViewModel {
             switch result {
             case .success(let movies):
                 if !movies.isEmpty {
-                    print(movies)
                     self.state = .populated
                     self.movies = movies
                     self.limit = self.movies.count
@@ -82,7 +80,7 @@ class MoviesTableViewModel {
         }
     }
     
-    func intializePaginationArray() {
+    private func intializePaginationArray() {
         for i in 0..<10 {
             paginationMovies.append(movies[i])
         }
@@ -92,7 +90,7 @@ class MoviesTableViewModel {
         state = .loading
         paginationMovies.removeAll()
         movies.sort {
-            convertStringIntoInt($0.year) > convertStringIntoInt($1.year)
+            $0.year.convertStringIntoInt() > $1.year.convertStringIntoInt()
         }
         state = .populated
     }
@@ -101,22 +99,8 @@ class MoviesTableViewModel {
         state = .loading
         paginationMovies.removeAll()
         movies.sort {
-            convertStringIntoDouble($0.imDBRating) > convertStringIntoDouble($1.imDBRating)
+            $0.imDBRating.convertStringIntoDouble() > $1.imDBRating.convertStringIntoDouble()
         }
         state = .populated
-    }
-    
-    func convertStringIntoInt(_ string: String?) -> Int{
-        guard let string = string else {
-            return 0
-        }
-        return Int(string) ?? 0
-    }
-    
-    func convertStringIntoDouble(_ string: String?) -> Double{
-        guard let string = string else {
-            return 0.0
-        }
-        return Double(string) ?? 0.0
     }
 }

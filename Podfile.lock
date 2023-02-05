@@ -4,6 +4,7 @@ PODS:
   - lottie-ios (3.2.3)
   - ProgressHUD (13.6.2)
   - ReachabilitySwift (5.0.0)
+  - SkeletonView (1.30.4)
   - TTGSnackbar (1.11.1)
 
 DEPENDENCIES:
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - lottie-ios (~> 3.2.3)
   - ProgressHUD
   - ReachabilitySwift
+  - SkeletonView
   - TTGSnackbar
 
 SPEC REPOS:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - lottie-ios
     - ProgressHUD
     - ReachabilitySwift
+    - SkeletonView
     - TTGSnackbar
 
 SPEC CHECKSUMS:
@@ -29,8 +32,9 @@ SPEC CHECKSUMS:
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   TTGSnackbar: fea91c62637b5662f808a4c3b55f7631cb7e1ef7
 
-PODFILE CHECKSUM: d9fdb39dcbd39f10d5351e9610370871c828b4c3
+PODFILE CHECKSUM: 8fa613b90fe33ccc2bea909d85ba224680ed24e2
 
 COCOAPODS: 1.11.3

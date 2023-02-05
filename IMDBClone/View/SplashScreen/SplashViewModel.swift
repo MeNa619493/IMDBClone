@@ -42,15 +42,11 @@ class SplashViewModel {
         }
     }
     
-    func saveMoviesToCoreData(appDelegate: AppDelegate, movies: [Movie]) {
+    private func saveMoviesToCoreData(appDelegate: AppDelegate, movies: [Movie]) {
         databaseManager.saveMovies(appDelegate: appDelegate, movies: movies) { [weak self] isCashed in
             guard let self = self else { return }
             
-            if isCashed {
-                self.state = .success
-            } else {
-                self.state = .failed
-            }
+            self.state = isCashed ? .success : .failed
         }
     }
     

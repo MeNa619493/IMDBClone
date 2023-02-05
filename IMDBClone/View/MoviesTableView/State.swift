@@ -13,8 +13,3 @@ public enum State {
     case empty
     case populated
 }
-
-public enum CachedState {
-    case success
-    case failed
-}

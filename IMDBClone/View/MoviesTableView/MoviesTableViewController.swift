@@ -30,7 +30,7 @@ class MoviesTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         initView()
         initVM()
     }
@@ -61,7 +61,6 @@ class MoviesTableViewController: UIViewController {
                 case .populated:
                     self.hideProgress()
                     self.handlePopulatedArrayState()
-                    self.sortMoviesByYear()
                 }
             }
         }
@@ -79,6 +78,13 @@ class MoviesTableViewController: UIViewController {
         }
         
         viewModel.fetchMovies(appDelegate: appDelegate)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.state == .populated {
+            viewModel.sortMoviesByYear()
+        }
     }
     
     private func registerNibFile() {
@@ -110,7 +116,7 @@ class MoviesTableViewController: UIViewController {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             self.viewModel.sortMoviesByYear()
-        }
+       }
     }
     
     @IBAction private func sortMoviesByRate(_ sender: UIButton) {
@@ -140,6 +146,7 @@ class MoviesTableViewController: UIViewController {
 extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(movies.count)
         return movies.count
     }
     
