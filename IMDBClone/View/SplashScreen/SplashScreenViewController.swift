@@ -54,7 +54,6 @@ class SplashScreenViewController: UIViewController {
     private func showSnackBar() {
         let snackbar = TTGSnackbar(message: "Connection Failed !",duration: .forever)
             
-        // Action 1
         snackbar.actionText = "Reload"
         snackbar.actionTextColor = UIColor.white
         snackbar.actionBlock = { [weak self] (snackbar) in
@@ -63,7 +62,6 @@ class SplashScreenViewController: UIViewController {
             self.viewModel.fetchMoviesFromApi(appDelegate: self.appDelegate)
         }
 
-        // Action 2
         snackbar.secondActionText = "Continue"
         snackbar.secondActionTextColor = UIColor.white
         snackbar.secondActionBlock = { [weak self] (snackbar) in
